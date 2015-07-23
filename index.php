@@ -1,4 +1,15 @@
 <?php
+/*
+PHP - Highlighter Text 
+Date: 2015-07-23
+By: Engineer, Web Developer Gregory Hidalgo Ramírez
+Websites:
+- www.gregoryhidalgo.com
+- www.valoresweb.com
+GitHub:  @ghidalgor | Twitter: @websoundcr
+Please refer me :-);
+*/
+
 include("includes/function.php");
 $originTxt = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
 
@@ -55,7 +66,7 @@ if(isset($_POST['txtHighlighter'])){
 
 	<footer class="txtFooter">
 		<h3>PHP <span class="text_highlighter">highlight</span> Text</h3>
-		<h4>By  <a href="http://www.gregoryhidalgo.com/" target="_blank"> <?php echo date('Y'); ?> Gregory Hidalgo</a></h4>
+		<h4>By  <a href="http://www.gregoryhidalgo.com/" target="_blank"> <?php echo date('Y'); ?> Gregory Hidalgo</a> - Degree in Computer Science</h4>
 	</footer>
 </body>
 </html>

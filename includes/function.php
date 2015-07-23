@@ -1,8 +1,18 @@
 <?php
+/*
+PHP - Highlighter Text 
+Date: 2015-07-23
+By: Engineer, Web Developer Gregory Hidalgo Ramírez
+Websites:
+- www.gregoryhidalgo.com
+- www.valoresweb.com
+GitHub:  @ghidalgor | Twitter: @websoundcr
+Please refer me :-);
+*/
 
 function text_highlighter($originText, $keymatch){
-#Variables
 
+#Variables
 $keywordSize = 0;
 $keywordPos = 0;
 $keyTemp = "";
@@ -56,6 +66,7 @@ if($originText!="" && $keymatch!="")
 
 }
 
+#
 function extraCharacters($character){
 	$found = null;
 
@@ -74,9 +85,9 @@ function extraCharacters($character){
 	return $found;
 }
 
-function captureCharacter($textChain){
-
-$arrData = array();
+function captureCharacter($textChain)
+{
+	$arrData = array();
 
 	for ($position = 0, $textLen = mb_strlen($textChain,'UTF-8'); $position < $textLen; $position++)
 	{
@@ -87,6 +98,9 @@ $arrData = array();
 	return $arrData;
 }
 
+
+
+#This function compare word by word. I'ts 70% of effective.
 function text_highlighter2($fulltext, $keyword)
 {
 	#Var
@@ -104,8 +118,6 @@ function text_highlighter2($fulltext, $keyword)
 
  $split_words = explode( " " , $fulltext);
 
-#print_r($split_words);
-
 for($i=0; $i<count($split_words);$i++){
 
 	if(strtolower($split_words[$i]) == strtolower($keyword))
@@ -121,34 +133,10 @@ for($i=0; $i<count($split_words);$i++){
 
 }
 
-#echo $replaced_string;
+	#echo $replaced_string;
 	$arrayRet[0] = $highlightersCount; # Store 
 	$arrayRet[1] = $replaced_string; # Origin text + highlighter words
 
 	return $arrayRet;
-
-
-
-
-/*
-	$search = '/'.$keyword.'/i';
-	$highlightersCount = substr_count($fulltext, $keyword);
-
-	if (preg_match($search, $fulltext))
-	{
-		$fulltext = trim($fulltext);
-		$wordLenght = strlen($search); //Longitud de toda la vulgar_word
-
-		# Highlighter keyword
-		$replaceWord = "<span class=\"text_highlighter\">".$keyword."</span>";
-		$replaced_string = str_replace($keyword,$replaceWord,$fulltext);
-
-		$arrayRet[0] = $highlightersCount; # Store 
-		$arrayRet[1] = $replaced_string; # Origin text + highlighter words
-
-		return $arrayRet;
-	
-	}*/
-
 }
 ?>

@@ -2,9 +2,8 @@
 
 function text_highlighter($originText, $keymatch){
 #Variables
-//$keywordCont = 0;
+
 $keywordSize = 0;
-//$keywordAux = null;
 $keywordPos = 0;
 $keyTemp = "";
 $allText = array();
@@ -14,41 +13,44 @@ $finalText  = "";
 if($originText!="" && $keymatch!="")
 {
 
-#Capch characters and put it inside array()
-$allText = captureCharacter($originText);
-$keyword = captureCharacter($keymatch);
+	#Capch characters and put it inside array()
+	$allText = captureCharacter($originText);
+	$keyword = captureCharacter($keymatch);
 
-$keywordSize = count($keyword);
+	$keywordSize = count($keyword);
 
-	for($pos=0; $pos<count($allText); $pos++)
-	{
+		for($pos=0; $pos<count($allText); $pos++)
+		{
 
-		if((strtolower($allText[$pos]) == strtolower($keyword[$keywordPos])) || (extraCharacters($allText[$pos]) == $keyword[$keywordPos])) {
+			if((strtolower($allText[$pos]) == strtolower($keyword[$keywordPos])) || (extraCharacters($allText[$pos]) == $keyword[$keywordPos])) {
 
-			$keyTemp = $keyTemp.$allText[$pos];
-			if(($keywordSize-1) == $keywordPos){
-				$keywordPos = 0;
+				$keyTemp = $keyTemp.$allText[$pos];
+				if(($keywordSize-1) == $keywordPos)
+				{							
+					$finalText = $finalText."<span class=\"text_highlighter\">".$keyTemp."</span>";
+					$keyTemp = "";
+					$keywordPos = 0;
+				}
+
+				if(($keywordPos+1) < $keywordSize){
+					$keywordPos++;
+				}
 				
-				$finalText = $finalText."<span class=\"text_highlighter\">".$keyTemp."</span>";
-				$keyTemp = "";
+
+			}else{
+					if($keywordPos>0)
+					{
+						$finalText = $finalText.$keyTemp;
+						$keyTemp = null;
+					}
+
+					$keywordPos = 0;
+					$finalText = $finalText.$allText[$pos];
 			}
 
-			$keywordPos++;
+		}#for
 
-		}else{
-
-			if($keywordPos>0){
-				$finalText = $finalText.$keyTemp;
-				$keyTemp = null;
-			}
-
-			$keywordPos = 0;
-			$finalText = $finalText.$allText[$pos];
-		}
-
-	}
-
-	echo $finalText;
+		echo $finalText;
 }
 
 
@@ -58,13 +60,13 @@ function extraCharacters($character){
 	$found = null;
 
 	#CONST
-    $tildes   = array('Á','É','Í','Ó','Ú','Ñ','á','é','í','ó','ú','ñ','a','e','i','o','u');
-    $noTildes = array('A','E','I','O','U','N','a','e','i','o','u','n','á','é','í','ó','ú');
+    $convert_to   = array('Á','É','Í','Ó','Ú','Ñ','á','é','í','ó','ú','ñ','a','e','i','o','u');
+    $convert_from = array('A','E','I','O','U','N','a','e','i','o','u','n','á','é','í','ó','ú');
 
-    for($pos=0; $pos<count($tildes); $pos++)
+    for($pos=0; $pos<count($convert_to); $pos++)
     {
- 		if (strcmp(mb_substr($character,0,1,'UTF-8'), mb_substr($tildes[$pos],0,1,'UTF-8')) == 0)	{
-    		$found = $noTildes[$pos];
+ 		if (strcmp(mb_substr($character,0,1,'UTF-8'), mb_substr($convert_to[$pos],0,1,'UTF-8')) == 0)	{
+    		$found = $convert_from[$pos];
 		}
 
     }#For
@@ -73,6 +75,7 @@ function extraCharacters($character){
 }
 
 function captureCharacter($textChain){
+
 $arrData = array();
 
 	for ($position = 0, $textLen = mb_strlen($textChain,'UTF-8'); $position < $textLen; $position++)

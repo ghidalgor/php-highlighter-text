@@ -1,7 +1,6 @@
 <?php
 include("includes/function.php");
 $originTxt = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
-$originTxt = $originTxt."Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 'de Finibus Bonorum et Malorum' (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, 'Lorem ipsum dolor sit amet..', comes from a line in section 1.10.32.";
 
 $keySearch = "";
 if(isset($_POST['txtHighlighter'])){
@@ -12,35 +11,51 @@ if(isset($_POST['txtHighlighter'])){
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<title>Highlighter Text</title>
+	<title>PHP - Highlighter Text</title>
 	<link rel="stylesheet" type="text/css" href="css/css_highlighter.css">
 </head>
 <body>
-	<div>
-		<h1>Original Text</h1>
+	<div class="txtHeader">
+		<h1>PHP - <span class="text_highlighter">Highlight</span> Text</h1>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+	<section class="txtArea">
+		<h2>Type and <span class="text_highlighter">highlight</span> text.</h1>
+		<hr>
+		<form id="frm1" name="frm1" enctype="multipart/form-data" method="POST" action="index.php">
+			<p>
+				<label>Keyword</label>
+				<input id="txtHighlighter" name="txtHighlighter" maxlength="50" size="50" value="<?php echo $keySearch;?>" placeholder="Type here your Highlight Text"> Example: lorem, LoRem, IPSUM, etc...
+			</p>
+			<p>
+				<input type="submit" value=" Highlight Text">
+			</p>
+		</form>
+		<div class="clear"></div>
+	</section>
+
+	<section class="txtArea">
+		<h2>Original Text</h1>
 		<hr>
 		<p>
 			<?php echo $originTxt; ?>
 		</p>
-	</div>
-	<div>
-		<form id="frm1" name="frm1" enctype="multipart/form-data" method="POST" action="index.php">
-			<p>
-				<label>Keyword</label>
-				<input id="txtHighlighter" name="txtHighlighter" value="" placeholder="Type here your keyword">
-			</p>
-			<p>
-				<input type="submit" value="Change">
-			</p>
-		</form>
-	</div>
+		<div class="clear"></div>
+	</section>
 
-	<div>
-		<h1>Highlighter Text</h1>
+	<section class="txtArea">
+		<h2>Highlighter Text</h1>
 		<hr>
 		<p>
 			<?php text_highlighter($originTxt, $keySearch); ?>
 		</p>
-	</div>	
+		<div class="clear"></div>
+	</section>
+
+	<footer class="txtFooter">
+		<h3>PHP <span class="text_highlighter">highlight</span> Text</h3>
+		<h4>By  <a href="http://www.gregoryhidalgo.com/" target="_blank"> <?php echo date('Y'); ?> Gregory Hidalgo</a></h4>
+	</footer>
 </body>
 </html>

@@ -1,6 +1,24 @@
+.clear{
+	clear:both;
+}
 .text_highlighter{
       font-weight: bold;
       font-size: 1em;
       color:#000;
       background-color: yellow;
+}
+.txtArea{
+	width: 90%;
+	margin: 1em auto;
+	padding: .2em .3em;
+	border:solid 1px #66C2FF;
+}
+.txtHeader, .txtFooter{
+
+	width: 100%;
+	margin: 1.5em auto;
+	padding: .2em 0;
+	background-color: #FF0066;
+	border:solid 1px #66C2FF;
+	text-align: center;
 }

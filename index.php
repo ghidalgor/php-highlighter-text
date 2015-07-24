@@ -23,6 +23,7 @@ if(isset($_POST['txtHighlighter'])){
 <head>
 	<meta charset="UTF-8">
 	<title>PHP - Highlighter Text</title>
+	<link rel="stylesheet" type="text/css" href="http://www.gregoryhidalgo.com/app/vendors/css/reset/normalize.css">
 	<link rel="stylesheet" type="text/css" href="css/css_highlighter.css">
 </head>
 <body>

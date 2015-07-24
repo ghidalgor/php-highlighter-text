@@ -12,7 +12,7 @@ Please refer me :-);
 
 function text_highlighter($originText, $keymatch){
 
-#Variables
+#--Variables
 $keywordSize = 0;
 $keywordPos = 0;
 $keyTemp = "";
@@ -69,7 +69,8 @@ if($originText!="" && $keymatch!="")
 
 }
 
-#
+#This function is when word has "tíldes"(spanish).
+#For example: "canción" is equal to "cancion", The only different is "ó" and "o". Function "extraCharacters()" to help fix this issue.
 function extraCharacters($character){
 	$found = null;
 

@@ -42,6 +42,9 @@ if($originText!="" && $keymatch!="")
 					$keywordPos = 0;
 				}
 
+				/* Ex: If $keyword contain "abc" characters. 
+					$keywordSize is equal to 3 and most value for $keywordPos will be 2. The next "if" avoid technical problems.
+				*/
 				if(($keywordPos+1) < $keywordSize){
 					$keywordPos++;
 				}

@@ -7,7 +7,7 @@ Websites:
 - www.gregoryhidalgo.com
 - www.valoresweb.com
 GitHub:  @ghidalgor | Twitter: @websoundcr
-Please refer me :-);
+Please, refer me :-);
 */
 
 function text_highlighter($originText, $keymatch){
